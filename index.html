@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio Héctor Gonzalez</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <main>
+        <h1>Refugio de Montaña Héctor Gonzalez</h1>
+        <section id="clima" class="d-flex box_clima ">
+        </section>
+        <section>
+            <div id="contenedor" class="div__box d-flex align-items-center">
+                <h2>Servicios y Opcionales</h2>
+            </div>
+        </section>
+        <section class="d-flex justify-content-center p-5">
+            <button id="btnReserva" type="button" class="btn btn-primary btn-lg">Reservar Alojamiento</button>
+        </section>
+        <section>
+            <div id="contenedorReserva" class="d-none">
+                <form id="form" class="border border-primary border-5 p-2">
+                    <label for="input Elije una Modalidad" class="form-label m-2"> Elije una Modalidad</label>
+                    <select id="modalidad" class="form-select" aria-label="Default select example" name="modalidad">
+                        <option selected>Modalidades</option>
+                        <option value="Habitacion">Habitacion</option>
+                        <option value="Carpa">Carpa</option>
+                    </select>
+                    <div class="mb-3">
+                        <label for=" input Cantidad de Lugares" class="form-label m-2">Cantidad de Lugares</label>
+                        <input id="cantidadLugares" type="number" class="form-control" id="" name="cantidadLugares">
+                        <div id="" class="form-text">Ingrese Cantidad de lugares que desea</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for=" input Cantidad de Noches" class="form-label">Cantidad de Noches de
+                            Alojamiento</label>
+                        <input id="noches" type="number" class="form-control" id="" name="cantidadNoches">
+                        <div id="" class="form-text">Ingrese Cantidad de Noches que desea Alojarse</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input Nombre Completo" class="form-label">Nombre Completo</label>
+                        <input id="nombre" type="text" class="form-control" name="nombre">
+                        <div class="form-text">Ingrese su Nombre</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input Apellido" class="form-label">Apellido</label>
+                        <input id="apellido" type="text" class="form-control" name="apellido">
+                        <div class="form-text">Ingrese su apellido</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Input Email1" class="form-label">Email</label>
+                        <input id="email" type="email" class="form-control" id="exampleInputEmail1" name="email">
+                        <div id="emailHelp" class="form-text">Ingrese su Email</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input Numero de Contacto" class="form-label">Numero de contacto</label>
+                        <input id="telefono" type="tel" class="form-control" name="numeroContacto">
+                        <div class="form-text">Ingrese su nro de Celular</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input fecha de Reserva" class="form-label">Fecha de Reserva</label>
+                        <input id="fecha" type="date" class="form-control" name="fechaReserva">
+                    </div>
+                    <div id="adicionales" class="m-3"></div>
+                    <button id="button" type="submit" class="btn btn-primary" value="Efectuar Reserva">Efectuar
+                        Reserva</button>
+                </form>
+            </div>
+        </section>
+        <section id="contenedorDatosReserva">
+        </section>
+    </main>
+    <script src="./bDArrays.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script src="./app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        emailjs.init('P5anaR6U9su_8aopG')
+    </script>
+</body>
+
+</html>
