@@ -23,7 +23,7 @@ function imprimirServicios(servicios) {
     let card = document.createElement("div");
     card.classList.add("col-12")
     card.innerHTML = `
-    <div class="card" style="width: 18rem;">
+    <div class="card mx-auto" style="width: 18rem;">
      <img src="${servicio.img}" class="card-img-top" alt="...">
         <div class="card-body">
             <p class="card-text"> ${servicio.item} <br> <strong> $ ${servicio.valor}</strong></p>
