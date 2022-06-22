@@ -17,14 +17,6 @@ h1 {
 }
 
 
-
-.div__box {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    justify-content: center;
-}
-
 .box_clima{
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 15px;

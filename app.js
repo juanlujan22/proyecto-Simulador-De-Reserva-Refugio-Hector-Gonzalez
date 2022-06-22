@@ -21,7 +21,7 @@ function imprimirServicios(servicios) {
  let contenedor = document.getElementById("contenedor")
  for(const servicio of servicios) {
     let card = document.createElement("div");
-    card.classList.add("col-3")
+    card.classList.add("col-12")
     card.innerHTML = `
     <div class="card" style="width: 18rem;">
      <img src="${servicio.img}" class="card-img-top" alt="...">
