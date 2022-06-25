@@ -14,18 +14,18 @@
 <body>
     <main>
         <h1 class="text-white">Refugio de Montaña Héctor Gonzalez</h1>
-        <section id="clima" class="d-flex box_clima ">
+        <section id="clima" class="rounded-pill container text-center p-3 mb-2 border border-primary d-flex justify-content-center box_clima ">
         </section>
-        <h2 class="text-center m-4">Servicios y Opcionales</h2>
+        <h3 class="container-fluid text-center p-1 rounded-pill bg-primary text-white"style="width: 18rem">Servicios y Opcionales</h3>
         <section class="container-fluid d-flex align-item-center">
             <div id="contenedor" class="row d-flex justify-content-center">
             </div>
         </section>
         <section class="container">
             <div class="row">
-                <h6 class="text-center p-3 mb-2 bg-primary text-white">Clickea el boton "Cotizador", para realizar una Cotización de Servicios y Opcionales</h6> 
+                <h6 class="text-center p-3 m-5 bg-warning text-white">Clickea el boton "Cotizador", para realizar una Cotización de Servicios y Opcionales</h6> 
                 <div class="col-12 text-center">
-                     <button id="btnCotizador" type="button" class="btn btn-outline-primary m-5 ">Cotizador</button> 
+                     <button id="btnCotizador" type="button" class="btn btn-warning w-25 h-150 text-white">COTIZADOR</button> 
                 </div>
             </div>
         </section>
@@ -36,45 +36,45 @@
             <div id="contenedorReserva" class="d-none">
                 <form id="form" class="border border-primary border-5 p-2">
                     <label for="input Elije una Modalidad" class="form-label m-2"> Elije una Modalidad</label>
-                    <select id="modalidad" class="form-select" aria-label="Default select example" name="modalidad">
+                    <select id="modalidad" class="form-select" aria-label="Default select example" name="modalidad" required>
                         <option selected>Modalidades</option>
                         <option value="Habitacion">Habitacion</option>
                         <option value="Carpa">Carpa</option>
                     </select>
                     <div class="mb-3">
                         <label for=" input Cantidad de Lugares" class="form-label m-2">Cantidad de Lugares</label>
-                        <input id="cantidadLugares" type="number" class="form-control" id="" name="cantidadLugares">
+                        <input id="cantidadLugares" type="number" class="form-control" id="" name="cantidadLugares" required>
                         <div id="" class="form-text">Ingrese Cantidad de lugares que desea</div>
                     </div>
                     <div class="mb-3">
                         <label for=" input Cantidad de Noches" class="form-label">Cantidad de Noches de
                             Alojamiento</label>
-                        <input id="noches" type="number" class="form-control" id="" name="cantidadNoches">
+                        <input id="noches" type="number" class="form-control" id="" name="cantidadNoches" required>
                         <div id="" class="form-text">Ingrese Cantidad de Noches que desea Alojarse</div>
                     </div>
                     <div class="mb-3">
                         <label for="input Nombre Completo" class="form-label">Nombre Completo</label>
-                        <input id="nombre" type="text" class="form-control" name="nombre">
+                        <input id="nombre" type="text" class="form-control" name="nombre" required>
                         <div class="form-text">Ingrese su Nombre</div>
                     </div>
                     <div class="mb-3">
                         <label for="input Apellido" class="form-label">Apellido</label>
-                        <input id="apellido" type="text" class="form-control" name="apellido">
+                        <input id="apellido" type="text" class="form-control" name="apellido" required>
                         <div class="form-text">Ingrese su apellido</div>
                     </div>
                     <div class="mb-3">
                         <label for="Input Email1" class="form-label">Email</label>
-                        <input id="email" type="email" class="form-control" id="exampleInputEmail1" name="email">
+                        <input id="email" type="email" class="form-control" id="exampleInputEmail1" name="email" required>
                         <div id="emailHelp" class="form-text">Ingrese su Email</div>
                     </div>
                     <div class="mb-3">
                         <label for="input Numero de Contacto" class="form-label">Numero de contacto</label>
-                        <input id="telefono" type="tel" class="form-control" name="numeroContacto">
+                        <input id="telefono" type="tel" class="form-control" name="numeroContacto" required>
                         <div class="form-text">Ingrese su nro de Celular</div>
                     </div>
                     <div class="mb-3">
                         <label for="input fecha de Reserva" class="form-label">Fecha de Reserva</label>
-                        <input id="fecha" type="date" class="form-control" name="fechaReserva">
+                        <input id="fecha" type="date" class="form-control" name="fechaReserva" required>
                     </div>
                     <div id="adicionales" class="m-3"></div>
                     <button id="button" type="submit" class="btn btn-primary" value="Efectuar Reserva">Efectuar

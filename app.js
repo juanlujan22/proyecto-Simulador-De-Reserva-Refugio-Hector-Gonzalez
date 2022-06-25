@@ -59,7 +59,7 @@ function imprimirServicios(servicios) {
     let card = document.createElement("div");
     card.classList.add("col-12")
     card.innerHTML = `
-    <div class="card mx-auto" style="width: 18rem;">
+    <div class="card border border-primary border-3 mx-auto m-1" style="width: 18rem;">
      <img src="${servicio.img}" class="card-img-top" alt="...">
         <div class="card-body">
             <p class="card-text"> ${servicio.item} <br> <strong> $ ${servicio.valor}</strong></p>
@@ -264,7 +264,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
 //constante URLGET con la url de API del clima: http://api.weatherunlocked.com/api/current/51.50,-0.12?app_id=APP_ID&app_key=APP_KEY
 // ESTRUCTURA: api/current/{-31.977373055596736, -64.90260034517549}?app_id=2276ee45&app_key=cf7dea54ee588c11537c9b74827afa2f
 // se toma el objeto data y se renderizan algunos datos datos del clima en tiempo real. 
-const URLGET = "http://api.weatherunlocked.com/api/current/-31.97,-64.90?lang=es&app_id=2276ee45&app_key=cf7dea54ee588c11537c9b74827afa2f";
+const URLGET = "http://api.weatherunlocked.com/api/current/-31.986,-64.936?lang=es&app_id=2276ee45&app_key=cf7dea54ee588c11537c9b74827afa2f";
 
 fetch(URLGET)
 .then(resultado=>resultado.json())
