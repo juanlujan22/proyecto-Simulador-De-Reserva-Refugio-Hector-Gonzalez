@@ -15,6 +15,42 @@ class Reserva{
 	} 
 } 
 
+//BOTON COTIZADOR
+
+
+let btnCotizador = document.getElementById("btnCotizador");
+btnCotizador.onclick=()=>{
+    //SE UTILIZO OPERADOR TERNARIOLA PARA REEMPLAZAR LA FUNCION "cotizarAlojamiento()""
+    let mod = confirm("Seleccione:\naceptar p/ cotizar Habitación\ncancelar p/cotizar Carpa");
+    let cantNoches = Number(prompt("Ingrese cantidad de Noches"));
+    
+    const cotizarAlojamiento =  mod===true ? precioBase += habitacion*cantNoches : precioBase += carpa*cantNoches;
+
+    // SE UTILIZO OPERADOR TERNARIO PARA  "adicionarServicio()" Y SE UTILIZO EL SUGAR SINTAX  +=    
+    let adicionalAsado = confirm("Desea adicionar un asado al menú por $800? \n \n Cuando regreses de la cima del Champaquí, te esperamos con un asado");
+    let adicionalVianda = confirm("Desea adicionar una vianda por $300? \n \n Lo vas a necesitar en tu trekking hacia la cima del cerro Champaquí");
+    let adicionalPorteoMochila = confirm("Desea adicionar servicio de traslado de mochila en mula, por $2000? \n \n Te llevamos tu mochila, ida y vuelta, alivianandote el peso");
+    let adicionalGuiaMontaña = confirm("Desea adicionar servicio de guía de montaña habilitado, por $6000? \n \n Si es tu primer trekking a esta zona este servicio es muy recomendado");
+
+    const adicionarAsado = adicionalAsado === true ? adicionales += asado : adicionales += 0 ;
+    const adicionarVianda = adicionalVianda === true ? adicionales += vianda : adicionales += 0 ;
+    const adicionarPorteo = adicionalPorteoMochila === true ? adicionales += porteoMochila : adicionales += 0 ;
+    const adicionarGuia = adicionalGuiaMontaña === true ? adicionales += guiaHabilitado : adicionales += 0 ;
+
+    console.log("agrega $"+ asado +" de asado, obteniendo un subtotal $"+ adicionarAsado)
+    console.log("agrega $"+ vianda+" de vianda, obteniendo un subtotal de $"+adicionarVianda)
+    console.log("agrega $"+ porteoMochila+" de porteo de mochila, obteniendo un subtotal de $"+adicionarPorteo)
+    console.log("agrega $"+ guiaHabilitado+" de guía habilitado, obteniendo un subtotal de $"+adicionarGuia)
+
+    //aviso informativo sweet alert con la suma 
+    Swal.fire(
+        "En total es $"+(adicionales + cotizarAlojamiento),
+        "Alojamiento $"+(cotizarAlojamiento)+";  Adicionales $"+(adicionales), 
+        "info",
+        );
+    
+};
+
 //INTERACCION CON HTML: imprimir servicios, opcionales y precios
 
 function imprimirServicios(servicios) {
@@ -29,7 +65,7 @@ function imprimirServicios(servicios) {
             <p class="card-text"> ${servicio.item} <br> <strong> $ ${servicio.valor}</strong></p>
         </div>
     </div>`
-    contenedor.appendChild(card)      
+    contenedor.appendChild(card)       
  }
 }
 
@@ -40,7 +76,7 @@ imprimirServicios(opcionales)
 
 // BOTON HTML DE RESERVA, QUE MUESTRA O OCULTA FORMULARIO PARA RESERVAR.
 
-let botonReserva = document.getElementById ("btnReserva")
+let botonReserva = document.getElementById("btnReserva")
 botonReserva.addEventListener("click", mostrarOcultarFormulario)
 
 
@@ -49,6 +85,7 @@ function mostrarOcultarFormulario () {
     if(contenedor.style.display =="" || contenedor.style.display == "none") {
         console.log("hiciste click!");
         contenedor.className = "d-block";
+        foco()
       }
       else {
         console.log("hiciste clanck")
@@ -56,9 +93,13 @@ function mostrarOcultarFormulario () {
     }
 }   
 
+//foco al primer input del formulario
+function foco() {
+    document.getElementById("modalidad").focus();
+}
 // TOMA DE DATOS DEL FORMULARIO POR MEDIO DE DOM
 
-let campoModalidad = document.getElementById ("modalidad");
+let campoModalidad = document.getElementById("modalidad");
 let campoNombre = document.getElementById("nombre");                  
 let campoApellido = document.getElementById("apellido");              
 let campoEmail = document.getElementById("email");                    
@@ -79,31 +120,14 @@ document.getElementById('form')
     const reservaJsonAObjeto = JSON.parse(localStorage.getItem("reservaJsonEnLocal"));
     console.log(reservaJsonAObjeto);
     
+  
+
     imprimirDatosReserva();
-    //SE UTILIZO OPERADOR TERNARIOLA PARA REEMPLAZAR LA FUNCION "cotizarAlojamiento()""
-    const cotizarAlojamiento =  campoModalidad.value == "Habitacion" ? precioBase += habitacion*campoNoches.value : precioBase += carpa*campoNoches.value;
     
-    Swal.fire( "El valor correspondiente a los dias de alojamiento"," es de $"+ (cotizarAlojamiento), "success")
-
-    // SE UTILIZO OPERADOR TERNARIO PARA  "adicionarServicio()" Y SE UTILIZO EL SUGAR SINTAX  +=    
-    let adicionalAsado = confirm("Desea adicionar un asado al menú por $800? \n \n Cuando regreses de la cima del Champaquí, te esperamos con un asado");
-    let adicionalVianda = confirm("Desea adicionar una vianda por $300? \n \n Lo vas a necesitar en tu trekking hacia la cima del cerro Champaquí");
-    let adicionalPorteoMochila = confirm("Desea adicionar servicio de traslado de mochila en mula, por $2000? \n \n Te llevamos tu mochila, ida y vuelta, alivianandote el peso");
-    let adicionalGuiaMontaña = confirm("Desea adicionar servicio de guía de montaña habilitado, por $6000? \n \n Si es tu primer trekking a esta zona este servicio es muy recomendado");
-
-    const adicionarAsado = adicionalAsado === true ? adicionales += asado : adicionales += 0 ;
-    const adicionarVianda = adicionalVianda === true ? adicionales += vianda : adicionales += 0 ;
-    const adicionarPorteo = adicionalPorteoMochila === true ? adicionales += porteoMochila : adicionales += 0 ;
-    const adicionarGuia = adicionalGuiaMontaña === true ? adicionales += guiaHabilitado : adicionales += 0 ;
-
-    console.log("agrega $"+ asado +" de asado, obteniendo un subtotal $"+ adicionarAsado)
-    console.log("agrega $"+vianda+" de vianda, obteniendo un subtotal de $"+adicionarVianda)
-    console.log("agrega $"+porteoMochila+" de porteo de mochila, obteniendo un subtotal de $"+adicionarPorteo)
-    console.log("agrega $"+guiaHabilitado+" de guía habilitado, obteniendo un subtotal de $"+adicionarGuia)
     //libreria envio de datos por Email
     event.preventDefault();
 
-    botonSubmit.value = 'Enviando...';
+    botonSubmit.value = 'Enviando Mail de Reserva...';
  
     const serviceID = 'default_service';
     const templateID = 'template_78kzate';
@@ -115,19 +139,14 @@ document.getElementById('form')
      }, (err) => {
        botonSubmit.value = 'Efectuar Reserva';
        alert(JSON.stringify(err));
-     });
+    });
 
-
- //aviso informativo sweet alert con la suma 
-    Swal.fire("La suma de los adicionales"," es de $"+(adicionales), "info");
-    
     submit.reset();
 })
 //libreria envio de datos por Email
 const botonSubmit = document.getElementById('button');
 
 function nuevaReserva() { 
-	
     let modalidad = campoModalidad.value;
 	let noches = campoNoches.value;
     let nombre = campoNombre.value;
@@ -149,6 +168,8 @@ function capturarAdicionales(){
     })
     return arrayDeSeleccionados
 }
+
+//creacion de check box de adicionales en el formulario
 
 function mostrarAdicionales(adicionales){
     const contenedorAdicionales=document.getElementById("adicionales")
@@ -176,12 +197,13 @@ const vianda = 300;
 const porteoMochila = 2000;
 const guiaHabilitado = 6000;
 
+
 //IMPRESION DE DATOS DE LA RESERVA EN UNA CARD
 
 function imprimirDatosReserva() {
     
     let contenedorDatosReserva = document.getElementById("contenedorDatosReserva")
-    
+    let date = new Date;
     let card = document.createElement("div");
     card.innerHTML = `
         <div class="card m-4 d-flex align-items-center">
@@ -191,10 +213,10 @@ function imprimirDatosReserva() {
             <p class="card-text">* La reserva esta a <strong>Nombre</strong> de:${campoApellido.value}, ${campoNombre.value}, . <br>
              * En la <strong>Modalidad</strong>: ${campoModalidad.value}. <br>
              * En la <strong>Fecha</strong>:  ${campoFecha.value}. <br>
-             * <strong>Cantidad de lugares</strong> reservados: ${campoFecha.value}. <br>
+             * <strong>Cantidad de lugares</strong> reservados: ${campoCantidadLugares.value}. <br>
              * <strong>Cantidad de noches</strong> en el refugio: ${campoNoches.value}. <br> 
              </p>
-            <p class="card-text"><small class="text-muted">Esta Reserva, se realizo el: ${new Date}</small></p>
+            <p class="card-text"><small class="text-muted">Esta Reserva, se realizo el: ${date.toLocaleDateString()}</small></p>
             </div>
         </div>`   
     contenedorDatosReserva.appendChild(card)          
@@ -226,7 +248,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
       btn.value = 'Send Email';
-      alert('Sent!');
+      alert('Datos de Reserva Enviado al Refugio!');
     }, (err) => {
       btn.value = 'Send Email';
       alert(JSON.stringify(err));
