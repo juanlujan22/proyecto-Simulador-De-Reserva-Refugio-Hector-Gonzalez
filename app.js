@@ -271,5 +271,8 @@ fetch(URLGET)
 .then(data=>{ 
     console.log(data)
     let clima = document.getElementById("clima")
-    clima.innerText = "Clima Actual en el Cerro Champaquí (2790m.s.n.m): "+(data.wx_desc)+"\n"+"Sensación Termica: "+(data.feelslike_c)+"°C"+"\n"+"Temperatura: "+(data.temp_c)+"°C."+"\n"+"Velocidad del viento: "+(data.windspd_kmh+"km/h")
+    // clima.innerText = "Clima Actual en provincia de Córdoba, Cerro Champaquí (2790m.s.n.m)"+"\n"+"Cielo Actual: "+(data.wx_desc)+"\n"+"Sensación Termica: "+(data.feelslike_c)+"°C"+"\n"+"Temperatura: "+(data.temp_c)+"°C."+"\n"+"Velocidad del viento: "+(data.windspd_kmh+"km/h")
+    clima.innerHTML = `<h4 class="">Clima Actual en provincia de Córdoba, Cerro Champaquí (2790m.s.n.m)</h4> <br>
+    <p> Cielo Actual: ${data.wx_desc}<br>Sensación Termica: ${data.feelslike_c}°C.<br>Temperatura: ${data.temp_c}°C.<br>Velocidad del viento: ${data.windspd_kmh}km/h.</p>
+    `
 })
