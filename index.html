@@ -16,36 +16,36 @@
 
 <body>
     <main>
-        <h1 class="text-white mw-100 fs-1">Refugio de Montaña <br> Héctor Gonzalez</h1>
-        <section id="clima" class="flex-wrap rounded-pill container text-center p-5 mb-2 border border-primary d-flex justify-content-center box_clima ">
+        <h1 class="text-white text-bg-success p-4">Refugio de Montaña <br> Héctor Gonzalez</h1>
+        <section id="clima" class=" f-20  shadow flex-column rounded-pill text-center p-5 m-1 h-auto w-auto border border-success d-flex justify-content-center box_clima ">
         </section>
-        <h3 class="container-fluid text-center p-1 rounded-pill bg-primary text-white"style="width: 18rem">Servicios y Opcionales</h3>
-        <section class="container-fluid d-flex align-item-center">
+        <div class="d-flex justify-content-center align-item-center"><h3 class="d-flex justify-content-center text-center shadow-lg p-1 rounded-pill bg-success border border-dark rounded m-2 p-1 text-white"style="width: 18rem">Servicios y Opcionales</h3></div>
+        <section class="container-fluid d-flex align-item-center justify-content-center">
             <div id="contenedor" class="row d-flex justify-content-center">
             </div>
         </section>
         <section class="container">
             <div class="row justify-content-center">
-                <h6 class="w-100 text-center p-4 m-5 bg-warning text-white">Clickea el boton "COTIZADOR", para realizar una Cotización, con opciones, de Servicios y Adicionales</h6> 
+                <h6 class="w-75 text-center p-4 m-5 shadow-lg bg-primary border border-success text-white">Clickea el boton "COTIZADOR", para realizar una Cotización, con opciones, de Servicios y Adicionales:</h6> 
                 <div class="col-12 text-center">
-                     <button id="btnCotizador" type="button" class="btn btn-warning w-30 h-150 text-white">COTIZADOR</button> 
+                     <button id="btnCotizador" type="button" class="btn btn-primary border shadow-lg border-success w-30 h-150 text-white">COTIZADOR</button> 
                 </div>
             </div>
         </section>
         <section class="d-flex justify-content-center p-5">
-            <button id="btnReserva" type="button" class="btn btn-primary btn-lg">Reservar Alojamiento</button>
+            <button id="btnReserva" type="button" class="btn shadow-lg btn-warning border border-dark btn-lg">Reservar Alojamiento</button>
         </section>
         <section>
             <div id="contenedorReserva" class="d-none">
-                <form id="form" class="border border-primary border-5 p-2">
-                    <label for="input Elije una Modalidad" class="form-label m-2"> Elije una Modalidad</label>
+                <form id="form" class="shadow-lg border border-success border-5 p-2">
+                    <label for="input Elije una Modalidad" class="form-label">Elije una Modalidad</label>
                     <select id="modalidad" class="form-select" aria-label="Default select example" name="modalidad" required>
                         <option selected>Modalidades</option>
                         <option value="Habitacion">Habitacion</option>
                         <option value="Carpa">Carpa</option>
                     </select>
                     <div class="mb-3">
-                        <label for=" input Cantidad de Lugares" class="form-label m-2">Cantidad de Lugares</label>
+                        <label for="input Cantidad de Lugares" class="form-label mt-2">Cantidad de Lugares</label>
                         <input id="cantidadLugares" type="number" class="form-control" id="" name="cantidadLugares" required>
                         <div id="" class="form-text">Ingrese Cantidad de lugares que desea</div>
                     </div>
@@ -80,7 +80,7 @@
                         <input id="fecha" type="date" class="form-control" name="fechaReserva" required>
                     </div>
                     <div id="adicionales" class="m-3"></div>
-                    <button id="button" type="submit" class="btn btn-primary" value="Efectuar Reserva">Efectuar
+                    <button id="button" type="submit" class="btn btn-warning" value="Efectuar Reserva">Efectuar
                         Reserva</button>
                 </form>
             </div>

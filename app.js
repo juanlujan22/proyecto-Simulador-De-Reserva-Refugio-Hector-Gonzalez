@@ -27,10 +27,10 @@ btnCotizador.onclick=()=>{
     const cotizarAlojamiento =  mod===true ? precioBase += habitacion*cantNoches : precioBase += carpa*cantNoches;
 
     // SE UTILIZO OPERADOR TERNARIO PARA  "adicionarServicio()" Y SE UTILIZO EL SUGAR SINTAX  +=    
-    let adicionalAsado = confirm("Desea adicionar un asado al menú por $800? \n \n Cuando regreses de la cima del Champaquí, te esperamos con un asado");
-    let adicionalVianda = confirm("Desea adicionar una vianda por $300? \n \n Lo vas a necesitar en tu trekking hacia la cima del cerro Champaquí");
-    let adicionalPorteoMochila = confirm("Desea adicionar servicio de traslado de mochila en mula, por $2000? \n \n Te llevamos tu mochila, ida y vuelta, alivianandote el peso");
-    let adicionalGuiaMontaña = confirm("Desea adicionar servicio de guía de montaña habilitado, por $6000? \n \n Si es tu primer trekking a esta zona este servicio es muy recomendado");
+    let adicionalAsado = confirm("Desea adicionar un asado al menú por $800? \n \nCuando regreses de la cima del Champaquí, te esperamos con un asado");
+    let adicionalVianda = confirm("Desea adicionar una vianda por $300? \n \nLo vas a necesitar en tu trekking hacia la cima del cerro Champaquí");
+    let adicionalPorteoMochila = confirm("Desea adicionar servicio de traslado de mochila en mula, por $2000? \n \nTe llevamos tu mochila, ida y vuelta, alivianandote el peso");
+    let adicionalGuiaMontaña = confirm("Desea adicionar servicio de guía de montaña habilitado, por $6000? \n \nSi es tu primer trekking a esta zona este servicio es muy recomendado");
 
     const adicionarAsado = adicionalAsado === true ? adicionales += asado : adicionales += 0 ;
     const adicionarVianda = adicionalVianda === true ? adicionales += vianda : adicionales += 0 ;
@@ -59,9 +59,9 @@ function imprimirServicios(servicios) {
     let card = document.createElement("div");
     card.classList.add("col-12")
     card.innerHTML = `
-    <div class="card border border-primary border-3 mx-auto m-1" style="width: 18rem;">
+    <div class="card border border-success border-3 mx-auto m-1" style="width: 18rem;">
      <img src="${servicio.img}" class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card-body shadow-lg">
             <p class="card-text"> ${servicio.item} <br> <strong> $ ${servicio.valor}</strong></p>
         </div>
     </div>`
@@ -272,7 +272,7 @@ fetch(URLGET)
     console.log(data)
     let clima = document.getElementById("clima")
     // clima.innerText = "Clima Actual en provincia de Córdoba, Cerro Champaquí (2790m.s.n.m)"+"\n"+"Cielo Actual: "+(data.wx_desc)+"\n"+"Sensación Termica: "+(data.feelslike_c)+"°C"+"\n"+"Temperatura: "+(data.temp_c)+"°C."+"\n"+"Velocidad del viento: "+(data.windspd_kmh+"km/h")
-    clima.innerHTML = `<h4 class="">Clima Actual en provincia de Córdoba, Cerro Champaquí (2790m.s.n.m)</h4> <br>
+    clima.innerHTML = `<h4 class="h-auto">Clima Actual en provincia de Córdoba, Cerro Champaquí (2790m.s.n.m)</h4> <br>
     <p> Cielo Actual: ${data.wx_desc}<br>Sensación Termica: ${data.feelslike_c}°C.<br>Temperatura: ${data.temp_c}°C.<br>Velocidad del viento: ${data.windspd_kmh}km/h.</p>
     `
 })
