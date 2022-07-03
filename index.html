@@ -28,7 +28,7 @@
             <div class="row justify-content-center">
                 <h6 class="w-75 text-center p-4 m-5 shadow-lg bg-primary border border-success text-white">Clickea el boton "COTIZADOR", para realizar una Cotización, con opciones, de Servicios y Adicionales:</h6> 
                 <div class="col-12 text-center">
-                     <button id="btnCotizador" type="button" class="btn btn-primary border shadow-lg border-success w-30 h-150 text-white">COTIZADOR</button> 
+                     <button id="btnCotizador" type="button" class="btn btn-success border shadow-lg border-dark w-30 h-150 text-white">COTIZADOR</button> 
                 </div>
             </div>
         </section>
@@ -38,50 +38,62 @@
         <section>
             <div id="contenedorReserva" class="d-none">
                 <form id="form" class="shadow-lg border border-success border-5 p-2">
-                    <label for="input Elije una Modalidad" class="form-label">Elije una Modalidad</label>
-                    <select id="modalidad" class="form-select" aria-label="Default select example" name="modalidad" required>
-                        <option selected>Modalidades</option>
-                        <option value="Habitacion">Habitacion</option>
-                        <option value="Carpa">Carpa</option>
-                    </select>
-                    <div class="mb-3">
+                    <div class="form-control">
+                        <label for="input Elije una Modalidad" class="form-label">Elije una Modalidad</label>
+                        <select id="modalidad" class="form-select p-2" aria-label="input Elije una Modalidad" name="modalidad" required>
+                            <option> </option>
+                            <option value="Habitacion">Habitacion</option>
+                            <option value="Carpa">Carpa</option>
+                        </select>
+                        <div class="form-text">Seleccione habitación o carpa</div>
+                    </div>
+                    <div class="mb-3 form-control">
                         <label for="input Cantidad de Lugares" class="form-label mt-2">Cantidad de Lugares</label>
-                        <input id="cantidadLugares" type="number" class="form-control" id="" name="cantidadLugares" required>
-                        <div id="" class="form-text">Ingrese Cantidad de lugares que desea</div>
+                        <input id="cantidadLugares" type="number" class="form-control" name="cantidadLugares" required>
+                        <small>Error message</small>
+                        <div class="form-text">Ingrese Cantidad de lugares que desea</div>
                     </div>
-                    <div class="mb-3">
-                        <label for=" input Cantidad de Noches" class="form-label">Cantidad de Noches de
-                            Alojamiento</label>
-                        <input id="noches" type="number" class="form-control" id="" name="cantidadNoches" required>
-                        <div id="" class="form-text">Ingrese Cantidad de Noches que desea Alojarse</div>
+                    <div class="mb-3 form-control">
+                        <label for=" input Cantidad de Noches" class="form-label">Cantidad de Noches de Alojamiento</label>
+                        <input id="noches" type="number" class="form-control" name="cantidadNoches" required>
+                        <div class="form-text">Cantidad de Noches que desea Alojarse</div>
+                        <small>Error message</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-control">
                         <label for="input Nombre Completo" class="form-label">Nombre Completo</label>
                         <input id="nombre" type="text" class="form-control" name="nombre" required>
                         <div class="form-text">Ingrese su Nombre</div>
+                        <small>Error message</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-control">
                         <label for="input Apellido" class="form-label">Apellido</label>
                         <input id="apellido" type="text" class="form-control" name="apellido" required>
                         <div class="form-text">Ingrese su apellido</div>
+                        <small>Error message</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-control">
                         <label for="Input Email1" class="form-label">Email</label>
                         <input id="email" type="email" class="form-control" id="exampleInputEmail1" name="email" required>
-                        <div id="emailHelp" class="form-text">Ingrese su Email</div>
+                        <div id="emailHelp" class="form-text">Ingrese su Email para contacto</div>
+                        <small>Error message</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-control">
                         <label for="input Numero de Contacto" class="form-label">Numero de contacto</label>
-                        <input id="telefono" type="tel" class="form-control" name="numeroContacto" required>
-                        <div class="form-text">Ingrese su nro de Celular</div>
+                        <input id="telefono" type="number" class="form-control" name="numeroContacto" required>
+                        <div class="form-text">Ingrese nro de Celular para contacto</div>
+                        <small>Error message</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-control">
                         <label for="input fecha de Reserva" class="form-label">Fecha de Reserva</label>
                         <input id="fecha" type="date" class="form-control" name="fechaReserva" required>
+                        <div class="form-text">Fecha en la que ingresa al alojamiento </div>
+                        <small>Error message</small>
                     </div>
-                    <div id="adicionales" class="m-3"></div>
-                    <button id="button" type="submit" class="btn btn-warning" value="Efectuar Reserva">Efectuar
-                        Reserva</button>
+                    <div id="adicionales" class="p-2">       
+                    </div>
+                    <button id="button" type="submit" class="btn btn-warning border-dark" value="Efectuar Reserva">
+                        Efectuar Reserva
+                    </button>
                 </form>
             </div>
         </section>

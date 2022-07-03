@@ -25,3 +25,41 @@ background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(25,135,84,1) 97%, rg
 }
 
 
+/* Estilos para validacion de formulario*/
+.form-control {
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 25px;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    border: 2px solid gainsboro;
+    border-radius: 4px;
+    display: block;
+}
+
+.form-control.succes input{
+    border-color: green;
+    
+}
+
+.form-control.error input{
+    border-color:red;
+}
+
+.form-control small {
+    color: red ;
+    position:absolute;
+    bottom: 3rem;
+    left: 8rem;
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}

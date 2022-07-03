@@ -60,7 +60,7 @@ function imprimirServicios(servicios) {
     card.classList.add("col-12")
     card.innerHTML = `
     <div class="card border border-success border-3 mx-auto m-1" style="width: 18rem;">
-     <img src="${servicio.img}" class="card-img-top" alt="...">
+     <img src="${servicio.img}" class="card-img-top" alt="imagen de servicio o adicional">
         <div class="card-body shadow-lg">
             <p class="card-text"> ${servicio.item} <br> <strong> $ ${servicio.valor}</strong></p>
         </div>
@@ -79,19 +79,20 @@ imprimirServicios(opcionales)
 let botonReserva = document.getElementById("btnReserva")
 botonReserva.addEventListener("click", mostrarOcultarFormulario)
 
+let contenedor = document.getElementById("contenedorReserva")
 
 function mostrarOcultarFormulario () {
-    let contenedor = document.getElementById("contenedorReserva")
-    if(contenedor.style.display =="" || contenedor.style.display == "none") {
-        console.log("hiciste click!");
+    if (contenedor.style.display == "none" || contenedor.style.display =="") {
+        contenedor.style.display = "block";
         contenedor.className = "d-block";
         foco()
-      }
-      else {
-        console.log("hiciste clanck")
+    } else {
         contenedor.className = "d-none";
+        contenedor.style.display = "none";
     }
-}   
+}
+
+
 
 //foco al primer input del formulario
 function foco() {
@@ -109,42 +110,7 @@ let campoNoches = document.getElementById("noches");
 let campoFecha = document.getElementById("fecha");                    
 let form = document.getElementById("form");                  
 
-
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-    event.preventDefault()
-    console.log(listaReservasClientes);
-    listaReservasClientes.unshift(nuevaReserva());
-
-    reservaJsonEnLocal("reservaJsonEnLocal", JSON.stringify(listaReservasClientes));
-    const reservaJsonAObjeto = JSON.parse(localStorage.getItem("reservaJsonEnLocal"));
-    console.log(reservaJsonAObjeto);
-    
-  
-
-    imprimirDatosReserva();
-    
-    //libreria envio de datos por Email
-    event.preventDefault();
-
-    botonSubmit.value = 'Enviando Mail de Reserva...';
- 
-    const serviceID = 'default_service';
-    const templateID = 'template_78kzate';
- 
-    emailjs.sendForm(serviceID, templateID, this)
-     .then(() => {
-       botonSubmit.value = 'Efectuar Reserva';
-       Swal.fire( "La Reserva se ha Realizado con exito!", "El total de Alojamiento, más los Adicionales, es de $"+ (precioBase+adicionales), "success");
-     }, (err) => {
-       botonSubmit.value = 'Efectuar Reserva';
-       alert(JSON.stringify(err));
-    });
-
-    submit.reset();
-})
-//libreria envio de datos por Email
-const botonSubmit = document.getElementById('button');
+let botonSubmit = document.getElementById('button');
 
 function nuevaReserva() { 
     let modalidad = campoModalidad.value;
@@ -176,7 +142,7 @@ function mostrarAdicionales(adicionales){
     contenedorAdicionales.innerHTML=""
     adicionales.forEach(adicional => {
         contenedorAdicionales.innerHTML+=`
-            <div class="col-6">
+            <div class="col-12">
                 <input type="checkbox" id="add${adicional.id}" value="${adicional.id}"/>
                 <label for="add${adicional.id}">${adicional.tipo} $ ${adicional.precio}</label>
             </div>
@@ -199,11 +165,11 @@ const guiaHabilitado = 6000;
 
 
 //IMPRESION DE DATOS DE LA RESERVA EN UNA CARD
-
+let date = new Date;
 function imprimirDatosReserva() {
     
     let contenedorDatosReserva = document.getElementById("contenedorDatosReserva")
-    let date = new Date;
+    date = new Date;
     let card = document.createElement("div");
     card.innerHTML = `
         <div class="card m-4 d-flex align-items-center">
@@ -244,6 +210,31 @@ document.getElementById('form').addEventListener('submit', function(event) {
 
    const serviceID = 'default_service';
    const templateID = 'template_78kzate';
+  
+
+   //JSON
+   console.log(listaReservasClientes);
+   listaReservasClientes.unshift(nuevaReserva());
+
+   reservaJsonEnLocal("reservaJsonEnLocal", JSON.stringify(listaReservasClientes));
+   const reservaJsonAObjeto = JSON.parse(localStorage.getItem("reservaJsonEnLocal"));
+   console.log(reservaJsonAObjeto);
+
+   imprimirDatosReserva();
+   
+   //libreria envio de datos por Email
+   event.preventDefault();
+
+   botonSubmit.value = 'Enviando Mail de Reserva...';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      botonSubmit.value = 'Efectuar Reserva';
+      Swal.fire( "La Reserva se ha Realizado con exito!", "success");
+    }, (err) => {
+      botonSubmit.value = 'Efectuar Reserva';
+      alert(JSON.stringify(err));
+   });
 
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
@@ -253,6 +244,11 @@ document.getElementById('form').addEventListener('submit', function(event) {
       btn.value = 'Send Email';
       alert(JSON.stringify(err));
     });
+
+    // validacion
+   checkInput()
+
+    form.reset();
 });
 
 // *****WEB API DEL CLIMA CON FETCH***** //
@@ -276,3 +272,111 @@ fetch(URLGET)
     <p> Cielo Actual: ${data.wx_desc}<br>Sensación Termica: ${data.feelslike_c}°C.<br>Temperatura: ${data.temp_c}°C.<br>Velocidad del viento: ${data.windspd_kmh}km/h.</p>
     `
 })
+
+/* 	validacion de formulario
+
+despues del e.preventDefault() se genera una funcion para chequear los input:
+
+inputs: 
+1_select modalidad
+2_input cantidad de lugar < 20
+3_input cantidad de noches < 5
+4_input nombre completo = sin simbolos
+5_input apellido = sin simbolos
+6_input email =
+7_input numero de contacto =
+8_input fecha de reserva < fecha actual
+*/
+
+function checkInput(){
+   
+    campoModalidad = document.getElementById("modalidad");
+    campoNombre = document.getElementById("nombre");                  
+    campoApellido = document.getElementById("apellido");              
+    campoEmail = document.getElementById("email");                    
+    campoTelefono = document.getElementById("telefono");             
+    campoCantidadLugares = document.getElementById("cantidadLugares");
+    campoNoches = document.getElementById("noches");                  
+    campoFecha = document.getElementById("fecha");                    
+    form = document.getElementById("form");    
+
+
+	const lugaresInput = campoCantidadLugares.value;
+    const nochesInput = campoNoches.value.trim();
+    const nombreInput = campoNombre.value.trim();
+    const apellidoInput = campoApellido.value.trim();
+    const emailInput = campoEmail.value.trim();
+    const telefonoInput = campoTelefono.value.trim();
+    const fechaInput = campoFecha.value;
+    const fechaActual = new Date();
+
+    if (lugaresInput >= 20) {
+        setErrorFor(campoCantidadLugares, 'para mas de 20 lugares, reserve via whatsapp, para trato diferenciado');
+    }else if(lugaresInput <= 0) {
+        setErrorFor(campoCantidadLugares, 'cantidad  de lugares no puede ser 0');}
+    else {setSuccessFor(campoCantidadLugares);
+    }
+
+    if (nochesInput > 5) {
+        setErrorFor(campoNoches, 'para más de 5 noches, reserve via whatsapp, para trato diferenciado');
+    } else if (nochesInput <= 0) {
+        setErrorFor (campoNoches, "cantidad  de noches no puede ser 0")
+    }else{setSuccessFor(campoNoches);
+    }
+
+    if (nombreInput === '') {
+        setErrorFor(campoNombre, 'nombre no puede quedar en blanco')
+    } else if (nombreInput == isNaN()){
+        setErrorFor(campoNombre, 'nombre no puede contener numeros')
+    }else{setSuccessFor(campoNombre);}
+
+    if (apellidoInput === '') {
+        setErrorFor(campoApellido, 'apellido no puede quedar en blanco')
+    } else if (apellidoInput == isNaN()){
+        setErrorFor(campoApellido, 'apellido no puede contener numeros')
+    }else{setSuccessFor(campoApellido);}
+
+    if (emailInput === '') {
+        setErrorFor(campoEmail, 'email no puede quedar en blanco')
+    } else if (! isEmail(campoEmail)) { 
+        setErrorFor(campoEmail, 'No ingreso un email valido')
+    } else {setSuccessFor(campoEmail)}
+
+    if (telefonoInput === '') {
+        setErrorFor(campoTelefono, 'telefono no puede quedar en blanco')
+    } else { setSuccessFor(campoTelefono)}
+
+
+    // $('#datepicker').datepicker({
+    //     ... <OTRAS OPCIONES>
+    //     minDate: today 
+    //     ... <OTRAS OPCIONES>
+    // });
+
+    if (fechaActual <= fechaInput) {
+        setErrorFor(campoFecha, 'la fecha debe ser a partir de la fecha actual'+(fechaActual));
+    } else {
+        setSuccessFor(campoFecha)
+    }
+} 
+
+function setErrorFor (input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+    formControl.className = 'form-control error';
+    small.innerText = message;
+}
+//21:30
+// el div que contiene el input lleva la class = "form-control"
+// <small>Error message </small> es una etiqueta 
+// form-control.error
+
+
+function setSuccessFor(input){
+    const formControl = input.parentElement; 
+    formControl.className = 'form-control success'
+}
+//validacion de mail con expresion regular, fuente:https://medium.com/@jgratereaux/validar-correos-electr%C3%B3nicos-con-expresiones-regulares-7914751b6018
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
