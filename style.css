@@ -45,18 +45,19 @@ background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(25,135,84,1) 97%, rg
 
 .form-control.succes input{
     border-color: green;
-    
+    background-color: rgb(90, 233, 90);
 }
 
 .form-control.error input{
     border-color:red;
+    background-color: rgb(238, 164, 164);
 }
 
 .form-control small {
     color: red ;
     position:absolute;
     bottom: 3rem;
-    left: 8rem;
+    left: 12rem;
     visibility: hidden;
 }
 
